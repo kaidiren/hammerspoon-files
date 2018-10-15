@@ -1,0 +1,85 @@
+-- -- 切换鼠标到不同的显示器屏幕中央
+-- hotkey.bind({'alt'}, 'tab', function()
+--     local screen = mouse.getCurrentScreen()
+--     local nextScreen = screen:next()
+--     local rect = nextScreen:fullFrame()
+--     local center = geometry.rectMidPoint(rect)
+--     mouse.setAbsolutePosition(center)
+--     eventtap.leftClick(center)
+--
+--     local size = 50
+--     -- Get the current co-ordinates of the mouse pointer
+--     local mousepoint = mouse.getAbsolutePosition()
+--     -- Prepare a big red circle around the mouse pointer
+--     local mouseCircle = drawing.circle(geometry.rect(mousepoint.x-(size/2), mousepoint.y-(size/2), size, size))
+--     mouseCircle:setStrokeColor({["red"]=0,["blue"]=1,["green"]=0,["alpha"]=1})
+--     mouseCircle:setFill(false)
+--     mouseCircle:setStrokeWidth(5)
+--     mouseCircle:show()
+--
+--     -- Set a timer to delete the circle after 3 seconds
+--     timer.doAfter(1, function() mouseCircle:delete() end)
+--
+-- end)
+
+-- function current_selection()
+--    local elem=hs.uielement.focusedElement()
+--    local sel=nil
+--    if elem then
+--       sel=elem:selectedText()
+--    end
+--    if (not sel) or (sel == "") then
+--       hs.eventtap.keyStroke({"cmd"}, "c")
+--       hs.timer.usleep(20000)
+--       sel=hs.pasteboard.getContents()
+--    end
+--    return (sel or "")
+-- end
+
+
+-- local candy = timer.doEvery(0.25, function()
+--   eventtap.keyStroke({'cmd'}, 'v', 1)
+--   eventtap.keyStroke({}, 'return', 1)
+-- end):stop()
+--
+-- hotkey.bind({'alt'}, 'g', function()
+--   if candy:running() then
+--     candy:stop()
+--     return
+--   end
+--   candy:start()
+-- end)
+
+-- cmd + 回车 使当前窗口全屏或者取消全屏状态
+-- hotkey.bind({'alt'}, 'return', function()
+--     local w = window.focusedWindow()
+--     if w then
+--       local isFullScreen = w:isFullScreen()
+--       w:setFullScreen(not isFullScreen)
+--     end
+-- end)
+
+
+-- --  下一个屏幕
+-- hotkey.bind({'alt'}, '.', function()
+--     local w = window.focusedWindow()
+--     if not w then
+--         return
+--     end
+--     local s = w:screen()
+--     if s then
+--         w:moveToScreen(s:next())
+--     end
+-- end)
+--
+-- --  上一个屏幕
+-- hotkey.bind({'alt'}, ',', function()
+--     local w = window.focusedWindow()
+--     if not w then
+--         return
+--     end
+--     local s = w:screen()
+--     if s then
+--         w:moveToScreen(s:next())
+--     end
+-- end)
